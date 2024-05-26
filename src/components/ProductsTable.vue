@@ -4,22 +4,21 @@ import Column from 'primevue/column';
 import axios from 'axios';
 import {onMounted, ref} from "vue";
 
-onMounted(() => {
-  fetchData();
-});
+const products = ref([]);
 
-const products = ref();
-
-const fetchData = async () => {
+const fetchProducts = async () => {
   try {
     const response = await axios.get('http://localhost:5001/api/records');
     products.value = response.data;
   } catch (error) {
     console.error(error);
+    products.value = [];
   }
 };
 
-fetchData()
+onMounted(() => {
+  fetchProducts();
+});
 </script>
 
 <template>
