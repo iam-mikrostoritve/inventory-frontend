@@ -24,4 +24,7 @@ export default defineConfig({
     build: {
         target: "ES2022"
     },
+    preview: {
+        port: 4173
+    }
 })
